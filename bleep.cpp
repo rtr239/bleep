@@ -37,27 +37,38 @@ size_t findWordPos (std::string word,
 	
 };
 
+std::string replaceWordText (
+	std::string word,
+	std::string text,
+	size_t startPos) {
+
+	std::string bleepedText = text;
+	size_t wordlen = word.length();
+	size_t textlen = text.length();
+	std::string bleepWord = "************************";
+
+	while (startPos < textlen) {
+		size_t wordPos = findWordPos(word, text, startPos);
+		bleepedText = text.replace(wordPos, wordlen, bleepWord, 0, wordlen);
+		startPos++;
+	};
+
+	return bleepedText;
+
+};
+
 
 int main() {
 
 	std::string word = "broccoli";
-	size_t wordlen = word.length();
 
 	std::string text = "I love broccoli,\n"
 					"I don't see my life without broccoli.\n"
 					"Each day I eat broccoli.";
 
-	std::string bleepWord = "************************";
-
 	
-
 	printWordText(word, text);
-	
 
-
-	size_t wordPos = findWordPos(word, text, 0);
-	text.replace(wordPos, wordlen, bleepWord, 0, wordlen);
-	std::cout << text << "\n";
-
+	std::cout << replaceWordText(word, text, 0) << "\n";
 
 }
