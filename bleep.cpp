@@ -19,7 +19,7 @@ void printWordText(std::string word, std::string text) {
 	};
 
 
-size_t finWordPos (std::string word, 
+size_t findWordPos (std::string word, 
 	std::string text, size_t startPos){
 
 	size_t wordPos = text.find(word, startPos);
@@ -51,7 +51,7 @@ int main() {
 
 	
 	printWordText(word, text);
-	wordPos = finWordPos(word, text, 0);
+	wordPos = findWordPos(word, text, 0);
 
 
 	text.replace(wordPos, 8, bleepWord, 0, 8);
