@@ -41,20 +41,22 @@ size_t findWordPos (std::string word,
 int main() {
 
 	std::string word = "broccoli";
+	size_t wordlen = word.length();
 
 	std::string text = "I love broccoli,\n"
 					"I don't see my life without broccoli.\n"
 					"Each day I eat broccoli.";
 
-	size_t wordPos;
 	std::string bleepWord = "************************";
 
 	
+
 	printWordText(word, text);
-	wordPos = findWordPos(word, text, 0);
+	
 
 
-	text.replace(wordPos, 8, bleepWord, 0, 8);
+	size_t wordPos = findWordPos(word, text, 0);
+	text.replace(wordPos, wordlen, bleepWord, 0, wordlen);
 	std::cout << text << "\n";
 
 
