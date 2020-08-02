@@ -46,7 +46,6 @@ std::vector<size_t> cleanVect (std::vector<size_t> initialVect)
 	for(size_t i=0; i< initialVectLen; i++){
 		if(initialVect[i] != initialVect [i+1]){
 		finalVect.push_back(initialVect[i]);
-		std::cout << "word found in position: " << finalVect[i] << "\n";
 		};
 	};
 	std::cout << "Cleaned vector size: "<<finalVect.size() << "\n";
@@ -64,12 +63,10 @@ std::string replaceWordText (
 	std::string bleepedText = text;
 	size_t wordlen = word.length();
 	size_t textlen = text.length();
-	std::string bleepWord = "********";
+	std::string bleepWord = "********"; // has to be the size of the word, can be improved in veriosn 2
 
 	for (size_t j=0; j < cleanVect.size(); j++) {
 		std::cout << "starting position: " << cleanVect[j] << "\n";
-		//size_t wordPos = findWordPos(word, text, cleanVect[j]);
-		//bleepedText = text.replace(cleanVect[j], wordlen, bleepWord, cleanVect[j], wordlen);
 		bleepedText = text.replace(cleanVect[j], wordlen, bleepWord);
 	};
 
@@ -90,18 +87,11 @@ int main() {
 	printWordText(word, text);
 
 	std::vector<size_t>  wordPosVect = findWordPos(word, text);
-	for(int y; y < wordPosVect.size(); y++){
-		std::cout << wordPosVect[y] << "\n";
-	};
-
-	std::vector<size_t> vecti;
-	vecti.push_back(1);
-	vecti.push_back(2);
-	vecti.push_back(3);
+	
 	std::vector<size_t> cleanedVect = cleanVect(wordPosVect);
 
 	std::string finalText = replaceWordText(word, text, cleanedVect);
-	std::cout << finalText << "\n";
+	std::cout << "The bleeped text is:" << finalText << "\n";
 
 
 }
