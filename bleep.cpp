@@ -65,25 +65,24 @@ std::vector<size_t> cleanVect (std::vector<size_t> initialVect){
 };
 
 
-/*std::string replaceWordText (
+std::string replaceWordText (
 	std::string word,
 	std::string text,
-	size_t startPos) {
+	std::vector<size_t> cleanVect) {
 
 	std::string bleepedText = text;
 	size_t wordlen = word.length();
 	size_t textlen = text.length();
 	std::string bleepWord = "************************";
 
-	while (startPos < textlen) {
-		size_t wordPos = findWordPos(word, text, startPos);
-		bleepedText = text.replace(wordPos, wordlen, bleepWord, 0, wordlen);
-		startPos++;
+	for (size_t j=0; j < cleanVect.size(); j++) {
+		//size_t wordPos = findWordPos(word, text, cleanVect[j]);
+		bleepedText = text.replace(cleanVect[j], wordlen, bleepWord, cleanVect[j], wordlen);
 	};
 
 	return bleepedText;
 
-};*/
+};
 
 
 int main() {
